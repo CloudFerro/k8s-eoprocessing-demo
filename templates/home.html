@@ -1,0 +1,16 @@
+{% extends 'base.html' %}s
+
+{% block content %}
+      <div class="container">
+        <br/>
+        <h2>EO Processing Sample Workflow</h2>
+        <br/>
+
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-action"><a href="{{ url_for('deploy_jobs') }}">Deploy Processing Jobs</a></li>
+            <li class="list-group-item list-group-item-action"><a href="{{ url_for('read_jobs') }}">Manage Current Jobs</a></li>
+            <li class="list-group-item list-group-item-action"><a href="{{ url_for('job_history') }}">Job History</a></li>
+          </ul>
+      </div>
+
+{% endblock %}
