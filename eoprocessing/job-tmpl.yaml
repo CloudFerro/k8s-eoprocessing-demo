@@ -1,0 +1,40 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: eo-job-$JOB_NUMBER
+  labels:
+    jobgroup: jobexample
+spec:
+  template:
+    metadata:
+      name: jobexample
+      labels:
+        jobgroup: jobexample
+    spec:
+      containers:
+      - name: c
+        image: docker.io/paultur/eoprocessing:latest
+        command: ["python", "app.py", "$WORKERS_COUNT", "$WORK_SIZE", "$JOB_NUMBER"]
+        env:
+        - name: "PRIVATE_ACCESS_KEY"
+          valueFrom:
+            secretKeyRef:
+              name: eoprocessing-secret
+              key: privateAccessKey
+        - name: "PRIVATE_SECRET_KEY"
+          valueFrom:
+            secretKeyRef:
+              name: eoprocessing-secret
+              key: privateSecretKey
+        - name: "POSTGRES_USER"
+          valueFrom:
+            secretKeyRef:
+              name: eoprocessing-secret
+              key: postgresUser
+        - name: "POSTGRES_PASSWORD"
+          valueFrom:
+            secretKeyRef:
+              name: eoprocessing-secret
+              key: postgresPassword
+
+      restartPolicy: Never

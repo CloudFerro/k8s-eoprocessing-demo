@@ -1,0 +1,53 @@
+{% extends 'base.html' %}s
+
+{% block content %}
+
+<div class="container">
+
+    <br/>
+
+    <h2>Current Jobs</h1>
+    
+    <br/>
+
+    <div>
+        <table class="table" id="job-status-table">
+                <thead>
+                        <tr>
+                                <th>Job</td>
+                                <th>Start Time</td>
+                                <th>Active</td>
+                                <th>Completed</td> 
+                        </tr>
+                </thead>
+                <tbody>
+                        {% for row in job_statuses %}
+                        <tr>
+                        {% for val in row %}
+                                <td>{{val}}</td>
+                        {% endfor %}
+                        </tr>
+                        {% endfor %}
+                </tbody>
+        </table>
+    </div>
+
+
+    <form method="post">
+        <button id="del-btn" type="submit" class="btn btn-primary">Delete Completed Jobs</button>
+    </form>
+
+</div>
+
+<script>
+        var table = document.getElementById("job-status-table");
+        var deleteButton = document.getElementById("del-btn");
+        var totalRowCount = table.rows.length;
+        console.log(totalRowCount);
+        if (totalRowCount === 1){
+                deleteButton.style.display = "none";
+        }
+</script>
+
+
+{% endblock %}

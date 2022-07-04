@@ -1,0 +1,62 @@
+{% extends 'base.html' %}s
+
+{% block content %}
+
+<div class="container">
+    
+    <br/>
+
+    <h2>Processing jobs batch deployment</h1>
+    
+    <br/>
+
+    <form method="post">
+
+        <div class="form-group">
+            <label for="collection">Collection:</label>
+            <input type="text" class="form-control" name="collection" placeholder="Sentinel-2" disabled>
+        </div>
+
+        <div class="form-group">
+            <label for="processing-level">Processing Level:</label>
+            <input type="text" class="form-control" name="processing-level" placeholder="L2A" disabled>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="publish-date-start">From</label>
+              <input type="text" class="form-control" name="publish-date-start" placeholder="08/01/2020" disabled>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="publish-date-end">To</label>
+                <input type="text" class="form-control" name="publish-date-end" placeholder="08/01/2020" disabled>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="processing-algorithm">Processing Algorithm:</label>
+            <input type="text" class="form-control" name="processing-algorithm" placeholder="Custom" disabled>
+        </div>
+
+        <div class="form-group">
+            <label for="workers-count">Jobs in batch:</label>
+            <input type="number" class="form-control" name="workers-count" min="1" max="10" value="{{ request.form['workers-count'] }}">
+            <small class="form-text text-muted">Files/Jobs should be an even number</small>
+        </div>
+
+        <div class="form-group">
+            <label for="work-size">Files in batch:</label>
+            <input type="number" class="form-control" name="work-size" min="1" max="1000" value="{{ request.form['workers-count'] }}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Run batch</button>
+
+    </form>
+
+</div>
+
+{% endblock %}
+
+
+
+

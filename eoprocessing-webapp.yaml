@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eoprocessing-webapp
+  namespace: default
+  labels:
+    app: eoprocessing-webapp 
+spec:
+  selector:
+    matchLabels:
+      app: eoprocessing-webapp
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: eoprocessing-webapp
+    spec:
+      containers:
+      - name: eoprocessing-webapp
+        image: docker.io/paultur/eoprocessing-webapp:latest
+        env:
+        - name: "POSTGRES_USER"
+          valueFrom:
+            secretKeyRef:
+              name: eoprocessing-secret
+              key: postgresUser
+        - name: "POSTGRES_PASSWORD"
+          valueFrom:
+            secretKeyRef:
+              name: eoprocessing-secret
+              key: postgresPassword
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eoprocessing-webapp
+  labels:
+    app: eoprocessing-webapp
+  namespace: default
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  selector:
+    app: eoprocessing-webapp

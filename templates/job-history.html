@@ -1,0 +1,41 @@
+{% extends 'base.html' %}s
+{% block content %}
+
+
+
+<div class="container">
+
+        <br/>
+
+        <h2>Job History</h1>
+        
+        <br/>
+
+        <div>
+                <table class="table">
+                <thead>
+                        <tr>
+                                <th>Job Id</td>
+                                <th>Job Start</td>
+                                <th>Job End</td>
+                                <th>Collection</td>
+                                <th>#Jobs in Batch</td>
+                                <th>Job# in Batch</th>
+                                <th>#Files in Job</td>
+                                <th>#Files in Batch</th> 
+                        </tr>
+                </thead>
+                <tbody>
+                        {% for row in result %}
+                        <tr>
+                            {% for val in row %}
+                                    <td>{{val}}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                  </tbody>
+                </table>
+        </div>
+</div>
+{% endblock %}
+
