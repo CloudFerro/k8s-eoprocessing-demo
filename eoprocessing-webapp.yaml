@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: eoprocessing-webapp
-        image: docker.io/paultur/eoprocessing-webapp:latest
+        image: docker.io/cfro/k8s_eoprocessing-webapp_demo:latest
         env:
         - name: "POSTGRES_USER"
           valueFrom:

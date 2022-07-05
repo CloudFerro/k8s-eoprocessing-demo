@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: c
-        image: docker.io/paultur/eoprocessing:latest
+        image: docker.io/cfro/k8s_eoprocessing_demo:latest
         command: ["python", "app.py", "$WORKERS_COUNT", "$WORK_SIZE", "$JOB_NUMBER"]
         env:
         - name: "PRIVATE_ACCESS_KEY"
