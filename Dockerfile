@@ -2,7 +2,7 @@
 
 FROM python:3.8-slim-buster
 
-WORKDIR /postgresapp
+WORKDIR /app
 
 COPY requirements.txt requirements.txt
 
