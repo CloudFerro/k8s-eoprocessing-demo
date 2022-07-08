@@ -1,6 +1,6 @@
 # Sample EO Processing workflow using Kubernetes jobs
 This is a demo application for CloudFerro Kubernetes as a Service webinar held on 30.06.2022.
-App mocks a sample EO processing workflow. The code pulls EO images from EO data, Kubernetes jobs store the output back to S3 private bucket (no actual processing in this sample workflow). Job history is saved in to a containerized Postgres deployment backed with a persistent Cinder volume.
+App mocks a sample EO processing workflow. The code pulls EO images from EO data, Kubernetes jobs store the output back to S3 private bucket (no actual processing in this sample workflow). Job history is saved in to a containerized Postgres deployment backed with a persistent Cinder volume. Flask web application enables interacting with these actions via UI.
 
 ## Prerequisites
 - Kubernetes Magnum cluster (with EODATA access enabled) on WAW3-1 cloud with Kubectl configured (refer to demo ppt deck). Best a fresh cluster to avoid any configuration conflicts.
@@ -17,7 +17,7 @@ App mocks a sample EO processing workflow. The code pulls EO images from EO data
 - After couple of minutes by running `kubectl get services` you will see Postgres and Webapp services running. Type into your browser the external IP of the Webapp service.
 
 ## Docker images
-- Deployment and service yaml file for both `eoprocessing` and `eoprocessing-webapp` containers are available as (public) Docker images in CFRO [Docker Hub](docker.io).
+- Deployment and service yaml file for both `eoprocessing` and `eoprocessing-webapp` containers are available as (public) Docker images in CFRO [Docker Hub](https://hub.docker.com/u/cfro).
 - You can build your own images based on included Dockerfiles and point to your own repository instead, you would need to reconfigure accordingly.
 
 ## Precautions
